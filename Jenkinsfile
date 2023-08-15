@@ -22,6 +22,13 @@ pipeline{
             }
             
         }
+        stage('Archive') {
+            steps {
+                // Archive the generated WAR file
+                archiveArtifacts artifacts: '**/target/*.war', allowEmptyArchive: true
+                stash includes: '**/target/*.war', name: 'war-artifact'
+            }
+        }
     }
     post{
         always{
