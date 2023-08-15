@@ -19,8 +19,7 @@ pipeline{
          stage('Archive') {
             steps {
                 // Archive the generated WAR file
-                archiveArtifacts artifacts: '**/target/*.war', allowEmptyArchive: true
-                stash includes: '**/target/*.war', name: 'war-artifact'
+                archiveArtifacts artifacts: 'CalculatorApp/target/*.war', allowEmptyArchive: true
             }
         }
         stage("deploy"){
