@@ -10,11 +10,14 @@ pipeline{
             }
             
         }
-        stage("build"){
-            steps{
-                bat 'mvn package'
+        stage('Build') {
+            steps {
+                // Clean and package the project using Maven
+                dir('C:\\Users\\BISMILLAH\\Desktop\\Devops\\CalculatorApp') {
+                    // Execute Maven commands
+                    bat 'mvn clean package'
+                }
             }
-            
         }
          stage('Archive') {
             steps {
