@@ -16,9 +16,9 @@ pipeline{
             }
             
         }
-        stage("print"){
+        stage("deploy"){
             steps{
-                echo 'deploy'
+                deploy adapters: [tomcat9(credentialsId: 'deployTest', path: '', url: 'http://localhost:9494/')], contextPath: 'calculatorApp', war: '**/*.war'
             }
             
         }
