@@ -16,19 +16,20 @@ pipeline{
             }
             
         }
-        stage("deploy"){
-            steps{
-                deploy adapters: [tomcat9(credentialsId: 'deployTest', path: '', url: 'http://localhost:9494/')], contextPath: 'calculatorApp', war: '**/*.war'
-            }
-            
-        }
-        stage('Archive') {
+         stage('Archive') {
             steps {
                 // Archive the generated WAR file
                 archiveArtifacts artifacts: '**/target/*.war', allowEmptyArchive: true
                 stash includes: '**/target/*.war', name: 'war-artifact'
             }
         }
+        stage("deploy"){
+            steps{
+                deploy adapters: [tomcat9(credentialsId: 'deployTest', path: '', url: 'http://localhost:9494/')], contextPath: 'calculatorApp', war: '**/*.war'
+            }
+            
+        }
+        
     }
     post{
         always{
