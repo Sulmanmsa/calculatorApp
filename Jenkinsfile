@@ -19,7 +19,7 @@ pipeline{
          stage('Archive') {
             steps {
                 // Archive the generated WAR file
-                archiveArtifacts artifacts: 'CalculatorApp/target/*.war', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'C:\\Users\\BISMILLAH\\Desktop\\Devops\\CalculatorApp/target/*.war', allowEmptyArchive: true
             }
         }
         stage("deploy"){
